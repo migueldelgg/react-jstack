@@ -1,12 +1,10 @@
-// toda vez que escrevemos codigo JSX o editor de codigo identifica
-// para escrever JSX temos que importar o React
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; 
 
-// renderize o h1 dentro da DIV com id igual a root
-ReactDOM.render(
-  <h1 id='title'>
-    <span>Hello World!!</span>
-  </h1>,
-  document.getElementById('root'),
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
+  <App/>,
 );
