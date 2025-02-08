@@ -160,3 +160,8 @@ function App() {
 O React Fragment é um componente fantasma, dessa forma ele retira a div e mantem apenas o h1 e o h2, separadamente.
 Podemos também utilizar o Fragment via short syntax, mas isso trás a limitação de não podermos passar atributos para aquela tag.
 short syntax -> <></>
+
+## React Props
+- Consiste em passar funcionalidades de um componente Pai para um componente Filho.
+- Props são (readonly) usadas apenas para leitura, ou seja são constantes
+- Somemente o componente <App> pode enviar props para <Post>
