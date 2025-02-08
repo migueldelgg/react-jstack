@@ -165,3 +165,7 @@ short syntax -> <></>
 - Consiste em passar funcionalidades de um componente Pai para um componente Filho.
 - Props são (readonly) usadas apenas para leitura, ou seja são constantes
 - Somemente o componente <App> pode enviar props para <Post>
+
+### Prop children
+- É uma propriedade especial que permite passar elementos filhos para dentro de um componente
+- Children recebe todas as propriedades colocadas passadas pelo Pai no corpo da Tag Children
