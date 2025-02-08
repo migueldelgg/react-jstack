@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 // renderize o h1 dentro da DIV com id igual a root
 ReactDOM.render(
   <h1 id='title'>
-    <span>Hello World!</span>
+    <span>Hello World!!</span>
   </h1>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
