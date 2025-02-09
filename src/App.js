@@ -1,12 +1,12 @@
 // Functional Component
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 
 import Header from "./Header.js";
 import Post from './Post.js'
+import { ThemeProvider } from "./ThemeContext.js";
 
 // Props -> Propriedades
 function App() {
-
   const [posts, setPosts] = useState([
     { id: Math.random(), title: "Title#01", subtitle: "sub#01", likes: 20, read: false },
     { id: Math.random(), title: "Title#02", subtitle: "sub#02", likes: 40, read: true },
@@ -32,8 +32,8 @@ function App() {
   }
 
   return (
-    <>
-      <Header title={"Miguel Blog"}>
+    <ThemeProvider>
+      <Header>
         <h2>
           Bem-vindo
           <button onClick={handleRefresh}>Atualizar</button>
@@ -48,7 +48,7 @@ function App() {
           post={post}
         />
       ))}
-    </>
+    </ThemeProvider>
   )
 }
 
