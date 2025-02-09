@@ -13,8 +13,6 @@ function App() {
     { id: Math.random(), title: "Title#03", subtitle: "sub#03", likes: 60 },
   ]);
 
-  console.log({ posts });
-
   function handleRefresh() {
     setPosts((prevState) => [
       ...prevState,
@@ -25,6 +23,12 @@ function App() {
         likes: 60 + prevState.length
       }
     ])
+  }
+
+  function handleRemovePosts(postIdToRemove) {
+    setPosts((prevState) => (
+      prevState.filter(post => post.id !== postIdToRemove)
+    ))
   }
 
   return (
@@ -41,7 +45,9 @@ function App() {
         <Post
           key={post.id} // deve ser unica
           likes={post.likes}
+          onRemove={handleRemovePosts}
           post={{
+            id: post.id,
             title: post.title,
             subtitle: post.subtitle,
           }}

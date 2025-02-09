@@ -196,7 +196,6 @@ const posts = [
 {
   posts.map((post) => (
     <Post
-      key={post.tile}
       likes={post.likes}
       post={{
         title: post.title,
@@ -208,3 +207,30 @@ const posts = [
 ```
 
 - Usamos map paras renderizar listas dentro do React
+- Funcoes handle para lidar com ações do usuário.
+
+## Use State
+
+- Passamos o valor inicial para a variavel useState
+- Sempre que atualizarmos um state no contexto: valor anterior + valor novo, devemos fazer 
+
+## Funções de Callback via Props
+- Ao usar o ``useState``, armazenamos uma lista de objetos representando os posts e fazemos a desestruturação desse estado em ``posts`` e ``setPosts``.
+
+  - O ``setPosts`` serve para atualizar o estado e, consequentemente, renderizar a lista novamente.
+
+  - Criamos a função handleRemovePosts, que recebe um postId como argumento e remove o post correspondente da lista.
+
+### Passando Funções como Props
+No componente ``App.js``, ao iterar sobre a lista de ``posts``, passamos para cada ``Post`` uma propriedade chamada ``onRemove``, cujo valor é a função ``handleRemovePosts``.
+
+Além disso, passamos o objeto ``post``, garantindo que cada componente ``Post.js`` tenha acesso ao seu próprio ID e demais informações.
+
+### Tipagem com ``PropTypes``
+No componente Post.js, fazemos a tipagem das propriedades:
+
+- onRemove é uma função obrigatória (func.isRequired).
+post é um objeto com a estrutura definida via shape(), incluindo id, title e subtitle.
+
+### Removendo um Post
+- Dentro do JSX do componente ``Post``, criamos um botão de remoção que recebe a propriedade ``onClick``. Essa propriedade é atribuída a uma *função anônima* que chama ``props.onRemove``, passando o id do ``post`` atual como argumento. Dessa forma, ao clicar no botão, o post é removido da lista.
