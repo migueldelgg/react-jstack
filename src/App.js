@@ -1,27 +1,45 @@
 // Functional Component
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 import Header from "./Header.js";
 import Post from './Post.js'
 
-const posts = [
-  { title: "Title#01", subtitle: "sub#01", likes: 20 },
-  { title: "Title#02", subtitle: "sub#02", likes: 40 },
-  { title: "Title#03", subtitle: "sub#03", likes: 60 },
-]
-
 // Props -> Propriedades
 function App() {
+
+  const [posts, setPosts] = useState([
+    { id: Math.random(), title: "Title#01", subtitle: "sub#01", likes: 20 },
+    { id: Math.random(), title: "Title#02", subtitle: "sub#02", likes: 40 },
+    { id: Math.random(), title: "Title#03", subtitle: "sub#03", likes: 60 },
+  ]);
+
+  console.log({ posts });
+
+  function handleRefresh() {
+    setPosts((prevState) => [
+      ...prevState,
+      {
+        id: Math.random(),
+        title: `Title#0${prevState.length + 1}`,
+        subtitle: `sub#0${prevState.length + 1}`,
+        likes: 60 + prevState.length
+      }
+    ])
+  }
+
   return (
     <>
       <Header title={"Miguel Blog"}>
-        <h2>Bem-vindo</h2>
+        <h2>
+          Bem-vindo
+          <button onClick={handleRefresh}>Atualizar</button>
+        </h2>
       </Header>
       <hr />
 
       {posts.map(post => (
         <Post
-          key={post.title} // deve ser unica
+          key={post.id} // deve ser unica
           likes={post.likes}
           post={{
             title: post.title,
